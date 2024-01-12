@@ -2,7 +2,6 @@ document.write(`
 
 <script src="scripts/Zebra.js"></script>
 <script src="scripts/projection.js"></script>
-<script src="scripts/hardCodedMesh.js"></script>
 <script src="scripts/Mesh.js"></script>
 <script src="scripts/Texture.js"></script>
 <script src="scripts/Object.js"></script>

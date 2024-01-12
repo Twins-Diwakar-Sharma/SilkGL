@@ -6,8 +6,8 @@ class ObjectRenderer {
     this.shader.mapUniform("projection");
     this.shader.mapUniform("transform");
     this.shader.mapUniform("albedo");
-    this.shader.mapUniform("cam");
-    this.shader.mapUniform("sun");
+    this.shader.mapCameraUniform("cam");
+    this.shader.mapDirectionalLightUniform("sun");
   }
 
   render =(objects, cam, sun)=> {
