@@ -4,9 +4,13 @@ class Engine {
 
     this.canvasWidth = width;
     this.canvasHeight = height;
+
+
+
     this.gl = gl;
     this.gl.enable(gl.DEPTH_TEST);
     this.gl.clearColor(0.1, 0.1, 0.2, 1);
+    this.gl.viewport(0,0,width,height); 
 
     document.addEventListener("keydown", this.keyDown, false);
     document.addEventListener("pointerlockchange", this.pointerLockChange, false);
@@ -18,17 +22,14 @@ class Engine {
 
     setProjection(0.1, 1000.0, 60.0, width, height);
 
-    this.alpineMesh = new Mesh(gl, "alpine");
-    this.alpineTex = new Texture(gl, "woodBox");
+    this.alpineMesh = new Mesh(gl, "scary");
+    this.alpineTex = new Texture(gl, "scaryBrown");
     this.objectRenderer = new ObjectRenderer(gl);
 
     this.objects = [];
     this.objects.push(new Object(this.alpineMesh, this.alpineTex));
-    this.objects.push(new Object(this.alpineMesh, this.alpineTex));
     this.objects[0].setPosition(0,0,-5);
     this.objects[0].setScale(1,1,1);
-    this.objects[1].setPosition(0,-1,0);
-    this.objects[1].setScale(10,0.05,10);
 
     this.cam = new Camera();
     this.sun = new DirectionalLight(new Vec3(0,-1,-1), new Vec3(1,1,0.7));
@@ -40,6 +41,7 @@ class Engine {
     this.roty = 0;
     this.mouseSpeed = 0.5;
     this.pause = false;
+
   
   }
 

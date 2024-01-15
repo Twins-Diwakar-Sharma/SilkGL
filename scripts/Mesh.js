@@ -2,17 +2,19 @@ class Mesh {
 
   constructor(gl, name) {
 
-    console.log("What is ?");
     this.gl = gl;
     const path = "inventory/models/"+ name +".stc";
+   this.size = 0; 
 
-
-    let vertexData = [ -1, 1, -1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 1, 1, -1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 1, -1, -1, 1, 0, 0, 0, 0, 1, 1, -1, 1, 1, 0, 0, 0, 1, -1, 1, 1, 0, 1, -1, 0, 0, -1, -1, -1, 1, 0, -1, 0, 0, -1, -1, 1, 0, 0, -1, 0, 0, 1, -1, -1, 1, 1, 0, -1, 0, -1, -1, 1, 0, 0, 0, -1, 0, -1, -1, -1, 0, 1, 0, -1, 0, 1, 1, -1, 1, 1, 1, 0, 0, 1, -1, 1, 0, 0, 1, 0, 0, 1, -1, -1, 1, 0, 1, 0, 0, -1, 1, -1, 0, 1, 0, 0, -1, 1, -1, -1, 1, 0, 0, 0, -1, -1, -1, -1, 0, 0, 0, 0, -1, -1, 1, 1, 0, 0, 0, 1, 0, -1, 1, 1, 0, 1, 0, 0, 1, -1, 1, -1, 1, 1, -1, 0, 0, 1, -1, 1, 1, 0, 0, -1, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1, 1, -1, 1, 1, 0, 0, -1,  ];
-     let indices = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 0, 18, 1, 3, 19, 4, 6, 20, 7, 9, 21, 10, 12, 22, 13, 15, 23, 16,  ];
-
-    this.generate(vertexData, indices);
-    this.size = indices.length;
-
+    fetch(path)
+      .then(response => response.text())
+      .then((data) => {
+        let arrays = data.split("\n"); 
+        let vertexData = (arrays[0].split(" ")).map(Number);
+        let indices = (arrays[1].split(" ")).map(Number);
+        this.generate(vertexData,indices);
+        this.size = indices.length;
+      }) ;
   }
 
   generate =(vertexData, indices)=> {

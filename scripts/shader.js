@@ -44,7 +44,7 @@ void main()
 
 	gl_Position = projectedPos;
 
-    fragTex = tex;
+  fragTex = vec2(tex.x, 1.0 - tex.y);
 	vec3 normal = nor;
 	fragNor = normalize((transform * vec4(normal,0.0) ).xyz) ;
 }

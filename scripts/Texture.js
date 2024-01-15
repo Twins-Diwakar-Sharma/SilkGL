@@ -19,7 +19,7 @@ class Texture {
       gl.generateMipmap(gl.TEXTURE_2D);
       console.log("source : " + image.src + " is laoded ");
       gl.bindTexture(gl.TEXTURE_2D, null);
-      
+            
     });
   }
 
