@@ -35,7 +35,7 @@ class Engine {
     this.sun = new DirectionalLight(new Vec3(0,-1,-1), new Vec3(1,1,0.7));
 
     this.forward = 0;
-    this.starfe = 0;
+    this.strafe = 0;
     this.speed = 0.1;
     this.rotx = 0;
     this.roty = 0;
@@ -67,11 +67,11 @@ class Engine {
   update =()=> {
 
     this.cam.rotate(this.rotx, this.roty, 0);
-    this.cam.translate(this.forward, this.starfe);
+    this.cam.translate(this.forward, this.strafe);
     this.roty = 0;
     this.rotx = 0;
     this.forward = 0;
-    this.starfe = 0;
+    this.strafe = 0;
 
   }
 
@@ -87,9 +87,9 @@ class Engine {
     }
 
     if("a" === event.key) {
-      this.starfe -= this.speed;
+      this.strafe -= this.speed;
     }else if("d" === event.key) {
-      this.starfe += this.speed;
+      this.strafe += this.speed;
     }
 
   }
